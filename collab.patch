@@ -1,6 +1,8 @@
---- server/collab-server.js	2015-06-18 15:29:30.028239130 +0500
-+++ server/collab-server.js	2015-06-18 12:45:02.561540833 +0500
-@@ -1142,6 +1142,8 @@ function handleConnect(userIds, client)
+diff --git a/server/collab-server.js b/server/collab-server.js
+index 385a687..3cb07dc 100644
+--- a/server/collab-server.js
++++ b/server/collab-server.js
+@@ -1228,6 +1228,8 @@ function handleConnect(userIds, client) {
              var usersMap = {};
              users.forEach(function (user) {
                  var uid = user.uid;
@@ -9,7 +11,7 @@
                  var onlineUserClients = onlineUsers[uid] || [];
                  var onlineState;
                  if (idleUsers[uid])
-@@ -1415,6 +1417,9 @@ function handleChatMessage(userIds, clie
+@@ -1500,6 +1502,9 @@ function handleChatMessage(userIds, client, data) {
      var text = data.text;
      var userId = userIds.userId;
  
@@ -19,7 +21,7 @@
      // Save the chat message and broadcast it
      Store.saveChatMessage(text, userId, function (err, message) {
        if (err)
-@@ -1464,6 +1469,7 @@ function handleCursorUpdate(userIds, cli
+@@ -1549,6 +1554,7 @@ function handleCursorUpdate(userIds, client, data) {
   * @param {String} docId   - the document id or path
   */
  function broadcast(message, sender, docId) {
